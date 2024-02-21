@@ -66,8 +66,16 @@ export interface IntrinsicNodeStyleCommonProps {
   borderRadius?: number | number[];
   borderRight?: BorderStyle;
   borderTop?: BorderStyle;
+  /**
+   * designates the display mode
+   * `flex`: a flexbox-like auto-sizing layout
+   * `block`:
+   */
   display?: 'flex' | 'block';
   effects?: any; // Should be EffectMap
+  /**
+   * designates the direction items are arranged
+   */
   flexDirection?: 'row' | 'column';
   gap?: number;
   justifyContent?:
@@ -112,6 +120,7 @@ export interface IntrinsicTextNodeStyleProps
 
 export interface IntrinsicNodeProps
   extends AddUndefined<IntrinsicNodeCommonProps & IntrinsicNodeStyleProps> {
+  /* when using an array of style objects lower index items have higher precedence, ie. [highestPriority, ..., lowestPriority] */
   style?:
     | IntrinsicNodeStyleProps
     | (IntrinsicNodeStyleProps | undefined)[]
@@ -121,6 +130,7 @@ export interface IntrinsicNodeProps
 
 export interface IntrinsicTextProps
   extends AddUndefined<IntrinsicNodeCommonProps & IntrinsicTextNodeStyleProps> {
+  /* when using an array of style objects lower index items have higher precedence, ie. [highestPriority, ..., lowestPriority] */
   style?:
     | IntrinsicTextNodeStyleProps
     | (IntrinsicTextNodeStyleProps | undefined)[]
